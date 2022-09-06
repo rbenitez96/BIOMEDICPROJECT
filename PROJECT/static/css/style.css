@@ -1,0 +1,24 @@
+h1 {
+    border: 2px #eee solid;
+    color: brown;
+    text-align: center;
+    padding: 10px;
+}
+
+.card_integ {
+    border: 2px #eee solid;
+    text-align: center;
+}
+
+.header_integ {
+    color: #0691db;
+}
+
+.icon-card-body{
+    border: 0px !important;
+    margin-top: 0px !important;
+    align-items: center;
+    align-self: center;
+    vertical-align: middle;
+    background-color: transparent !important;
+  }

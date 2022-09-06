@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/#">Home <span class="sr-only">(current)</span></a>
+              </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="/#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Prediccion
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="anemia">Anemia</a>
+                  <a class="dropdown-item" href="cancerdemama">Cáncer de mama</a>
+                </div>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="entrenamiento">Entrenamiento</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-1">
+          <img src="/static/logo_espol.png"  class="img-fluid" alt="">
+        </div>
+    </nav>
+    <div class="col-12" style="text-align: center;">
+        <h1>Predictor de patalogia - Anemia</h1>
+    </div>
+    <div class="col-12 ml-3" style="text-align: start;">
+      <h5>Sexo</h5>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radiosgeneros" id="checkhombre" value="option1" checked>
+        <label class="form-check-label" for="checkhombre">
+          Hombre
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radiosgeneros" id="checkmujer" value="option2">
+        <label class="form-check-label" for="checkmujer">
+          Mujer
+        </label>
+      </div>
+    </div>
+
+    <form class="col-12 mt-4" id="contact-form">
+      <div class="form-group">
+        <div class="row ml-1">
+          <div class="col-lg-2 col-md-4 col-sm-6">
+            <label for="input_edad">Edad</label>
+            <input type="text" class="form-control" id="input_edad" placeholder="Ingrese la edad">
+          </div>
+  
+          <div class="col-lg-2 col-md-4 col-sm-6">
+            <label for="input_rbc">RBC</label>
+            <input type="text" class="form-control" id="input_rbc" placeholder="Red Blood Cell count">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-sm-6">
+            <label for="input_pcv">PCV ó HCT[%]</label>
+            <input type="text" class="form-control" id="input_pcv" placeholder="Packed Cell Volume">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-sm-6">
+            <label for="input_mcv">MCV</label>
+            <input type="text" class="form-control" id="input_mcv" placeholder="Mean Cell Volume">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-sm-6">
+            <label for="input_mch">MCH</label>
+            <input type="text" class="form-control" id="input_mch" placeholder="Mean Cell Hemoglobin">
+          </div>
+
+          <div class="col-lg-3 col-md-6 col-sm-8 mt-4">
+            <label for="input_mchc">MCHC</label>
+            <input type="text" class="form-control" id="input_mchc" placeholder="Mean corpuscular hemoglobin concentration">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-sm-6 mt-4">
+            <label for="input_rdw">RDW</label>
+            <input type="text" class="form-control" id="input_rdw" placeholder="Red Cell Distribution width">
+          </div>
+
+          <div class="col-lg-3 col-md-6 col-sm-8 mt-4">
+            <label for="input_tlc">TLC</label>
+            <input type="text" class="form-control" id="input_tlc" placeholder="White Blood Cell (WBC count)">
+          </div>
+
+          <div class="col-lg-3 col-md-6 col-sm-8 mt-4">
+            <label for="input_plt">PLT/mm3</label>
+            <input type="text" class="form-control" id="input_plt" placeholder="Platelet">
+          </div>
+
+        </div>
+        
+      </div>
+
+      <div class="col-12 mt-4" style="text-align: center;">
+        <button  data-id='{{input_plt}}'type="button" id = "mybutton" class="btn btn-primary" >Consultar</button>
+      </div>
+      
+    </form>
+
+    <div class="row mt-4 ml-3">
+      <div class="col-1">
+        <label for="resultado">Resultado:</label>
+      </div>
+      <div class="col-1"></div>
+      <div class="col-4">
+        <span id="textresult"> </span>
+      </div>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type=text/javascript>
+      $(function() {
+        $('button#mybutton').on('click', function(e) {
+          e.preventDefault();
+          var condiciosex = document.getElementById('checkhombre').checked;
+          let sexo;
+          if(condiciosex){
+            sexo = 1;
+          }
+          else{
+            sexo = 0;
+          }
+          var input_edad = document.getElementById('input_edad').value.length == 0 ? "0" : document.getElementById('input_edad').value;
+          var input_rbc = document.getElementById('input_rbc').value.length == 0 ? "0" : document.getElementById('input_rbc').value;
+          var input_pcv = document.getElementById('input_pcv').value.length == 0 ? "0" : document.getElementById('input_pcv').value;
+          var input_mcv = document.getElementById('input_mcv').value.length == 0 ? "0" : document.getElementById('input_mcv').value;
+          var input_mch = document.getElementById('input_mch').value.length == 0 ? "0" : document.getElementById('input_mch').value;
+          var input_mchc = document.getElementById('input_mchc').value.length == 0 ? "0" : document.getElementById('input_mchc').value;
+          var input_rdw = document.getElementById('input_rdw').value.length == 0 ? "0" : document.getElementById('input_rdw').value;
+          var input_tlc = document.getElementById('input_tlc').value.length == 0 ? "0" : document.getElementById('input_tlc').value;
+          var input_plt = document.getElementById('input_plt').value.length == 0 ? "0" : document.getElementById('input_plt').value;
+          $.ajax({
+              url: '/background_process_test',
+              type: 'post',
+              data: {
+                sexo : sexo,
+                input_edad: input_edad,
+                input_rbc: input_rbc,
+                input_pcv: input_pcv,
+                input_mcv: input_mcv,
+                input_mch: input_mch,
+                input_mchc: input_mchc,
+                input_rdw: input_rdw,
+                input_tlc: input_tlc,
+                input_plt: input_plt},
+                success: function(response){
+                  document.getElementById("textresult").textContent=response;
+                  console.log(response);
+                },
+                error: function(error){
+                  console.log(error);
+                }
+              
+          });
+        });
+      });
+  </script>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  </body>
+</html>
