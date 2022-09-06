@@ -48,7 +48,7 @@ def function_extern(data):
 #background process happening without any refreshing
 @views.route('/background_process_test_cancermama',methods=["POST"])
 def background_process_test_cancermama():
-    radio_med = request.form['radio_med']
+    radio_med = request.form["radio_med"]
     textura_med = request.form['textura_med']
     perimetro_med = request.form['perimetro_med']
     area_med = request.form['area_med']
@@ -58,18 +58,33 @@ def background_process_test_cancermama():
     puntos_concavos_med = request.form['puntos_concavos_med']
     simetria_med = request.form['simetria_med']
     dimension_fractal_med = request.form['dimension_fractal_med']
-    radio_sec = request.form['radio_sec']
-    textura_sec = request.form['textura_sec']
-    perimetro_sec = request.form['perimetro_sec']
-    area_sec = request.form['area_sec']
-    suavidad_sec = request.form['suavidad_sec']
-    compacidad_sec = request.form['compacidad_sec']
-    concavidad_sec = request.form['concavidad_sec']
-    concavos_sec = request.form['concavos_sec']
-    lista_datos = [float(radio_med),float(textura_med),float(perimetro_med),float(area_med),float(suavidad_med),float(compacidad_med),float(concavidad_med),float(puntos_concavos_med),float(simetria_med),float(dimension_fractal_med), float(radio_sec),float(textura_sec), float(perimetro_sec),float(area_sec), float(suavidad_sec),float(compacidad_sec), float(concavidad_sec),float(concavos_sec)]
+    radio_se = request.form['radio_se']
+    textura_se = request.form['textura_se']
+    perimetro_se = request.form['perimetro_se']
+    area_se = request.form['area_se']
+    suavidad_se = request.form['suavidad_se']
+    compacidad_se = request.form['compacidad_se']
+    concavidad_se = request.form['concavidad_se']
+    concavos_se = request.form['concavos_se']
+    simetria_se = request.form['simetria_se']
+    dimension_fractal_se = request.form['dimension_fractal_se']
+    radio_worst = request.form['radio_worst']
+    textura_worst = request.form['textura_worst']
+    perimetro_worst = request.form['perimetro_worst']
+    area_worst = request.form['area_worst']
+    suavidad_worst = request.form['suavidad_worst']
+    compacidad_worst = request.form['compacidad_worst']
+    concavidad_worst = request.form['concavidad_worst']
+    concavos_worst = request.form['concavos_worst']
+    simetria_worst = request.form['simetria_worst']
+    dimension_fractal_worst = request.form['dimension_fractal_worst']
+    lista_datos = [float(radio_med),float(textura_med),float(perimetro_med),float(area_med),float(suavidad_med),float(compacidad_med),float(concavidad_med),float(puntos_concavos_med),float(simetria_med),float(dimension_fractal_med),
+                    float(radio_se),float(textura_se), float(perimetro_se),float(area_se), float(suavidad_se),float(compacidad_se), float(concavidad_se),float(concavos_se),
+                    float(simetria_se),float(dimension_fractal_se), float(radio_worst),float(textura_worst), float(perimetro_worst),float(area_worst), float(suavidad_worst),float(compacidad_worst),
+                    float(concavidad_worst),float(concavos_worst), float(simetria_worst),float(dimension_fractal_worst)]
     resultado_cancermama = function_extern_cancermama(lista_datos)
     
-    return ("Funciona prueba cancer mama")
+    return (resultado_cancermama)
 
 def function_extern_cancermama(data):
     arreglodata = [data]

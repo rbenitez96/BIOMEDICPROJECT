@@ -136,12 +136,18 @@ def predictmodel_cancermama(namemodel,arregloData):
     DataframeUs = pd.DataFrame(arregloData)
     print(DataframeUs)
     model_cancermama_load = loadmodel(namemodel)
-    #iscancer = model_cancermama_load.predict(DataframeUs)
-    print("iscancer")
+    iscancer = model_cancermama_load.predict(DataframeUs)
+    #print(deteccionCancer(iscancer))
+    return deteccionCancer(iscancer)
     
 
-def interpretarcancermama():
-  return "Es"
+def deteccionCancer (Z_pred):
+  respuesta = ""
+  if  Z_pred[0] == 1:
+    respuesta = "Usted tiene un cancer maligno"
+  else:
+    respuesta = "Usted tiene un cancer benigno"
+  return respuesta
 
 
 
